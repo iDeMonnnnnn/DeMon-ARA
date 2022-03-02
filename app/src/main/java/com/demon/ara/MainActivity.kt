@@ -3,9 +3,9 @@ package com.demon.ara
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.demon.ara.databinding.ActivityMainBinding
+import com.demon.ara.java.JavaActivity
 import com.demon.corektx.forActivityResult
 import com.demon.corektx.pairIntent
-import com.demon.corektx.toActivity
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"

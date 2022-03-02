@@ -15,14 +15,20 @@ import com.demon.core.lifecycle.DeMonActivityCallbacks
 object DeMonAraHelper {
 
 
+    /**
+     * 初始化，注册ActivityLifecycleCallbacks
+     */
     @JvmStatic
     fun init(@NonNull application: Application) {
         application.registerActivityLifecycleCallbacks(DeMonActivityCallbacks)
     }
 
-
+    /**
+     * 获取在Activity生命周期自动注册的ActivityResult
+     * Activity中请使用此方法
+     */
     @JvmStatic
-    fun getBaseActivityResult(@NonNull activity: FragmentActivity): DeMonActivityResult? {
+    fun getActivityResult(@NonNull activity: FragmentActivity): DeMonActivityResult? {
         activity.run {
             val mapKey = intent.getStringExtra(DeMonActivityCallbacks.DEMON_ACTIVITY_KEY)
             return if (!mapKey.isNullOrEmpty()) {
@@ -33,8 +39,12 @@ object DeMonAraHelper {
         }
     }
 
+    /**
+     * 获取在Fragment生命周期自动注册的ActivityResult
+     * Fragment中请使用此方法
+     */
     @JvmStatic
-    fun getBaseActivityResult(@NonNull fragment: Fragment): DeMonActivityResult? {
+    fun getActivityResult(@NonNull fragment: Fragment): DeMonActivityResult? {
         fragment.requireActivity().run {
             val mapKey = intent.getStringExtra(DeMonActivityCallbacks.DEMON_FRAGMENT_KEY)
             return if (!mapKey.isNullOrEmpty()) {

@@ -1,5 +1,6 @@
 package com.demon.core
 
+import android.app.Activity
 import android.content.Intent
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
@@ -15,14 +16,30 @@ import androidx.activity.result.contract.ActivityResultContract
  */
 class DeMonActivityResult(caller: ActivityResultCaller, contract: ActivityResultContract<Intent, ActivityResult>) {
 
+    /**
+     * 直接点击返回键或者直接finish是否会触发返回回调
+     * 用于处理一些特殊情况：如返回刷新等
+     * 注意此时回调返回的Intent必定为空，做好判空处理
+     */
+    private var isNeedBack = false
+
     private var launcher: ActivityResultLauncher<Intent>? = caller.registerForActivityResult(contract) {
-        callback?.onActivityResult(it)
+        when {
+            isNeedBack -> callback?.onActivityResult(it)
+            it.resultCode == Activity.RESULT_OK -> callback?.onActivityResult(it)
+            else -> {
+
+            }
+        }
     }
 
     private var callback: ActivityResultCallback<ActivityResult>? = null
 
-    fun launch(input: Intent, callback: ActivityResultCallback<ActivityResult>?) {
+
+    @JvmOverloads
+    fun launch(input: Intent, isNeedBack: Boolean = false, callback: ActivityResultCallback<ActivityResult>?) {
         this.callback = callback
+        this.isNeedBack = isNeedBack
         launcher?.launch(input)
     }
 

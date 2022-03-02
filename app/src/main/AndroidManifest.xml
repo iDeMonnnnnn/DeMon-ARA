@@ -28,7 +28,7 @@
             android:name=".TestJumpActivity"
             android:label="测试Activity跳转及返回值" />
         <activity
-            android:name=".JavaActivity"
+            android:name=".java.JavaActivity"
             android:label="测试Java调用" />
     </application>
 

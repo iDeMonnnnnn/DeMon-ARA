@@ -9,6 +9,7 @@ import com.demon.corektx.finishResult
 
 class TestJumpActivity : AppCompatActivity() {
     private  val TAG = "TestJumpActivity"
+
     private val string by extraAct<String>("tag")
 
     private val time by extraAct("timestamp", 0L)
