@@ -1,5 +1,6 @@
 package com.demon.ara
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.demon.ara.databinding.ActivityMainBinding
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity() {
 
 
             btn1.setOnClickListener {
-                forActivityResult(pairIntent<JavaActivity>()) {
+                val intent = Intent(this@MainActivity,JavaActivity::class.java)
+                forActivityResult(intent) {
                     val str = it?.getStringExtra("tag") ?: ""
                     text.text = "跳转页面返回值：$str"
                 }
