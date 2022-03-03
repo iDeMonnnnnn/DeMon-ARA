@@ -31,7 +31,7 @@ allprojects {
    implementation 'androidx.fragment:fragment:1.4.1'
 ```
 
-###
+### Licensed
 
 ```
    Copyright [2022] [DeMon-ARA]
