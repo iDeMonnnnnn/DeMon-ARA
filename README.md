@@ -45,28 +45,28 @@ class App : Application() {
 #### 2.Kotlin代码中使用
 
 ```java
-        val intent = Intent(this@MainActivity, JavaActivity::class.java)
-        forActivityResult(intent) {
-            val str = it?.getStringExtra("tag") ?: ""
-            text.text = "跳转页面返回值：$str"
-        }
+val intent = Intent(this@MainActivity, JavaActivity::class.java)
+forActivityResult(intent) {
+     val str = it?.getStringExtra("tag") ?: ""
+     text.text = "跳转页面返回值：$str"
+}
 ```
 
 #### 3.Java代码中使用
 
 ```java
-            DeMonActivityResult<Intent, ActivityResult> result = DeMonAraHelper.getActivityResult(JavaActivity.this);
+    DeMonActivityResult<Intent, ActivityResult> result = DeMonAraHelper.getActivityResult(JavaActivity.this);
             if (result != null) {
-                result.launch(new Intent(this, TestJumpActivity.class), true,
-                        data -> {
-                            if (data.getData() != null) {
-                                String str = data.getData().getStringExtra("tag");
-                                binding.text.setText("跳转页面返回值：" + str);
-                            } else {
-                                binding.text.setText("我是返回键返回的，没有返回值~");
-                            }
-                        });
-            }
+        result.launch(new Intent(this, TestJumpActivity.class), true,
+                data -> {
+                    if (data.getData() != null) {
+                        String str = data.getData().getStringExtra("tag");
+                        binding.text.setText("跳转页面返回值：" + str);
+                    } else {
+                        binding.text.setText("我是返回键返回的，没有返回值~");
+                    }
+                });
+    }
 ```
 
 ### Licensed
