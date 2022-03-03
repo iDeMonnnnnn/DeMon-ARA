@@ -3,6 +3,7 @@ package com.demon.ara.java;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.demon.ara.R;
@@ -21,11 +22,10 @@ public class JavaActivity extends AppCompatActivity {
         binding = ActivityJavaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, new JavaFragment()).commitAllowingStateLoss();
 
         binding.btn.setOnClickListener(view -> {
-            DeMonActivityResult result = DeMonAraHelper.getActivityResult(JavaActivity.this);
+            DeMonActivityResult<Intent, ActivityResult> result = DeMonAraHelper.getActivityResult(JavaActivity.this);
             if (result != null) {
                 result.launch(new Intent(this, TestJumpActivity.class), true,
                         data -> {

@@ -2,8 +2,10 @@ package com.demon.core.lifecycle
 
 import android.app.Activity
 import android.app.Application
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.FragmentActivity
 import com.demon.core.DeMonActivityResult
@@ -24,7 +26,7 @@ object DeMonActivityCallbacks : Application.ActivityLifecycleCallbacks {
     val callbackMap = mutableMapOf<String, DeMonFragmentCallbacks>()
 
     //临时存储BaseActivityResult
-    val resultMap = mutableMapOf<String, DeMonActivityResult>()
+    val resultMap = mutableMapOf<String, DeMonActivityResult<Intent, ActivityResult>>()
     override fun onActivityPaused(p0: Activity) {
 
     }
@@ -58,6 +60,7 @@ object DeMonActivityCallbacks : Application.ActivityLifecycleCallbacks {
         if (activity is FragmentActivity) {
             val mapKey: String = activity.javaClass.simpleName + System.currentTimeMillis()
             Log.i(TAG, "onActivityCreated: mapKey=$mapKey")
+            //注册
             val fragmentCallbacks = DeMonFragmentCallbacks()
             callbackMap[mapKey] = fragmentCallbacks
             activity.supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentCallbacks, false)

@@ -1,6 +1,9 @@
 package com.demon.core
 
 import android.app.Application
+import android.content.Intent
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -28,7 +31,7 @@ object DeMonAraHelper {
      * Activity中请使用此方法
      */
     @JvmStatic
-    fun getActivityResult(@NonNull activity: FragmentActivity): DeMonActivityResult? {
+    fun getActivityResult(@NonNull activity: FragmentActivity): DeMonActivityResult<Intent, ActivityResult>? {
         activity.run {
             val mapKey = intent.getStringExtra(DeMonActivityCallbacks.DEMON_ACTIVITY_KEY)
             return if (!mapKey.isNullOrEmpty()) {
@@ -44,7 +47,7 @@ object DeMonAraHelper {
      * Fragment中请使用此方法
      */
     @JvmStatic
-    fun getActivityResult(@NonNull fragment: Fragment): DeMonActivityResult? {
+    fun getActivityResult(@NonNull fragment: Fragment): DeMonActivityResult<Intent, ActivityResult>? {
         fragment.requireActivity().run {
             val mapKey = intent.getStringExtra(DeMonActivityCallbacks.DEMON_FRAGMENT_KEY)
             return if (!mapKey.isNullOrEmpty()) {
@@ -54,6 +57,10 @@ object DeMonAraHelper {
             }
         }
     }
+
+       fun get(@NonNull activity: FragmentActivity){
+           DeMonActivityResult(activity,ActivityResultContracts.GetContent())
+       }
 
 
 }

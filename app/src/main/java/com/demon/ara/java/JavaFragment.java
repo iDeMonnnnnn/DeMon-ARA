@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResult;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -37,7 +38,7 @@ public class JavaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.btn.setOnClickListener(view1 -> {
-            DeMonActivityResult result = DeMonAraHelper.getActivityResult(this);
+            DeMonActivityResult<Intent, ActivityResult> result = DeMonAraHelper.getActivityResult(this);
             if (result != null) {
                 result.launch(new Intent(requireContext(), TestJumpActivity.class), data -> {
                     String str = data.getData().getStringExtra("tag");

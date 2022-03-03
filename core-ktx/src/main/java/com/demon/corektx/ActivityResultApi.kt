@@ -3,6 +3,7 @@ package com.demon.corektx
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import androidx.activity.result.ActivityResult
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.demon.core.DeMonActivityResult
@@ -14,7 +15,7 @@ import com.demon.core.lifecycle.DeMonActivityCallbacks
  * E-mail idemon_liu@qq.com
  * Desc: Activity Results API ktx
  */
-inline fun FragmentActivity.getBaseActivityResult(): DeMonActivityResult? {
+inline fun FragmentActivity.getActivityResult(): DeMonActivityResult<Intent, ActivityResult>? {
     val mapKey = intent.getStringExtra(DeMonActivityCallbacks.DEMON_ACTIVITY_KEY)
     return if (!mapKey.isNullOrEmpty()) {
         DeMonActivityCallbacks.resultMap[mapKey]
@@ -23,7 +24,7 @@ inline fun FragmentActivity.getBaseActivityResult(): DeMonActivityResult? {
     }
 }
 
-inline fun Fragment.getBaseActivityResult(): DeMonActivityResult? {
+inline fun Fragment.getActivityResult(): DeMonActivityResult<Intent, ActivityResult>? {
     val mapKey = requireActivity().intent.getStringExtra(DeMonActivityCallbacks.DEMON_FRAGMENT_KEY)
     return if (!mapKey.isNullOrEmpty()) {
         DeMonActivityCallbacks.resultMap[mapKey]
@@ -37,11 +38,20 @@ inline fun FragmentActivity.forActivityResult(
     isCanBack: Boolean = false,
     crossinline callback: ((result: Intent?) -> Unit)
 ) {
-    getBaseActivityResult()?.launch(data) {
+    getActivityResult()?.launch(data, isCanBack) {
         if (isCanBack || it.resultCode == Activity.RESULT_OK) {
             callback(it.data)
         }
     }
+}
+
+inline fun <reified T : FragmentActivity> FragmentActivity.forActivityResult(
+    vararg extras: Pair<String, Any?>,
+    isCanBack: Boolean = false,
+    crossinline callback: ((result: Intent?) -> Unit)
+) {
+    val intent = pairIntent<T>(*extras)
+    forActivityResult(intent, isCanBack, callback)
 }
 
 inline fun Fragment.forActivityResult(
@@ -49,11 +59,20 @@ inline fun Fragment.forActivityResult(
     isCanBack: Boolean = false,
     crossinline callback: ((result: Intent?) -> Unit)
 ) {
-    getBaseActivityResult()?.launch(data) {
+    getActivityResult()?.launch(data) {
         if (isCanBack || it.resultCode == Activity.RESULT_OK) {
             callback(it.data)
         }
     }
+}
+
+inline fun <reified T : FragmentActivity> Fragment.forActivityResult(
+    vararg extras: Pair<String, Any?>,
+    isCanBack: Boolean = false,
+    crossinline callback: ((result: Intent?) -> Unit)
+) {
+    val intent = pairIntent<T>(*extras)
+    forActivityResult(intent, isCanBack, callback)
 }
 
 
