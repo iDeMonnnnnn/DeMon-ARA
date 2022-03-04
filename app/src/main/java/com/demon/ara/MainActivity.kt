@@ -22,11 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.run {
             btn.setOnClickListener {
-                forActivityResult(
-                    pairIntent<TestJumpActivity>(
-                        "tag" to TAG,
-                        "timestamp" to System.currentTimeMillis()
-                    ),
+                forActivityResult<TestJumpActivity>(
+                    "tag" to TAG,
+                    "timestamp" to System.currentTimeMillis(),
                     isCanBack = false
                 ) {
                     val str = it?.getStringExtra("tag") ?: ""
@@ -40,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
 
             btn1.setOnClickListener {
-                val intent = Intent(this@MainActivity,JavaActivity::class.java)
+                val intent = Intent(this@MainActivity, JavaActivity::class.java)
                 forActivityResult(intent) {
                     val str = it?.getStringExtra("tag") ?: ""
                     text.text = "跳转页面返回值：$str"
@@ -48,7 +46,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             btn2.setOnClickListener {
-                forActivityResult(pairIntent<ActResultActivity>()) {
+                forActivityResult(
+                    pairIntent<ActResultActivity>(
+                        "tag" to TAG,
+                        "timestamp" to System.currentTimeMillis()
+                    )
+                ) {
                     val str = it?.getStringExtra("tag") ?: ""
                     text.text = "跳转页面返回值：$str"
                 }

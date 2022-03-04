@@ -73,7 +73,7 @@ forActivityResult(intent) {
 
 更多扩展方法的使用可见[示例代码](https://github.com/iDeMonnnnnn/DeMon-ARA/tree/main/app/src/main/java/com/demon/ara)
 
-
+可直接下载体验[demo apk](https://github.com/iDeMonnnnnn/DeMon-ARA/raw/main/demo.apk)
 
 ### BUG/问题/建议
 

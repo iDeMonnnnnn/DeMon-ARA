@@ -17,7 +17,7 @@ import androidx.activity.result.contract.ActivityResultContract
 class DeMonActivityResult<I, O>(caller: ActivityResultCaller, contract: ActivityResultContract<I, O>) {
 
     /**
-     * 直接点击返回键或者直接finish是否会触发返回回调
+     * 直接点击返回键或者直接finish是否会触发回调
      * 用于处理一些特殊情况：如只要返回就刷新等
      * 注意此时回调返回的值或者{ActivityResult#getData()}应该为空，需要做好判空处理
      */

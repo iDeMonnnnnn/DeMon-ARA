@@ -13,7 +13,11 @@ import com.demon.core.lifecycle.DeMonActivityCallbacks
  * @author DeMon
  * Created on 2021/10/20.
  * E-mail idemon_liu@qq.com
- * Desc: Activity Results API ktx
+ * Desc: ktx扩展
+ */
+
+/**
+ * Activity中获取DeMonActivityResult
  */
 fun FragmentActivity.getActivityResult(): DeMonActivityResult<Intent, ActivityResult>? {
     val mapKey = intent.getStringExtra(DeMonActivityCallbacks.DEMON_ACTIVITY_KEY)
@@ -24,6 +28,9 @@ fun FragmentActivity.getActivityResult(): DeMonActivityResult<Intent, ActivityRe
     }
 }
 
+/**
+ * Fragment中获取DeMonActivityResult
+ */
 fun Fragment.getActivityResult(): DeMonActivityResult<Intent, ActivityResult>? {
     val mapKey = requireActivity().intent.getStringExtra(DeMonActivityCallbacks.DEMON_FRAGMENT_KEY)
     return if (!mapKey.isNullOrEmpty()) {
@@ -33,18 +40,44 @@ fun Fragment.getActivityResult(): DeMonActivityResult<Intent, ActivityResult>? {
     }
 }
 
+/**
+ * Activity跳转并在回调用获取返回结果
+ *  <pre>
+ *       val intent = Intent(this@MainActivity,JavaActivity::class.java)
+ *       forActivityResult(intent) {
+ *       val str = it?.getStringExtra("tag") ?: ""
+ *       text.text = "跳转页面返回值：$str"
+ *       }
+ *  </pre>
+ *
+ * @param isCanBack 直接点击返回键或者直接finish是否会触发回调
+ */
 inline fun FragmentActivity.forActivityResult(
     data: Intent,
     isCanBack: Boolean = false,
     crossinline callback: ((result: Intent?) -> Unit)
 ) {
     getActivityResult()?.launch(data, isCanBack) {
-        if (isCanBack || it.resultCode == Activity.RESULT_OK) {
-            callback(it.data)
-        }
+        callback(it.data)
     }
 }
 
+/**
+ * Activity跳转并在回调用获取返回结果
+ *  <pre>
+ *       forActivityResult<TestJumpActivity>(
+ *       "tag" to TAG,
+ *       "timestamp" to System.currentTimeMillis(),
+ *       isCanBack = false
+ *      ) {
+ *      val str = it?.getStringExtra("tag") ?: ""
+ *      text.text = "跳转页面返回值：$str"
+ *      }
+ *  </pre>
+ *
+ * @param extras 可变参数Pair键值对
+ * @param isCanBack 直接点击返回键或者直接finish是否会触发回调
+ */
 inline fun <reified T : FragmentActivity> FragmentActivity.forActivityResult(
     vararg extras: Pair<String, Any?>,
     isCanBack: Boolean = false,
@@ -54,18 +87,29 @@ inline fun <reified T : FragmentActivity> FragmentActivity.forActivityResult(
     forActivityResult(intent, isCanBack, callback)
 }
 
+/**
+ * Fragment中使用
+ * Activity跳转并在回调用获取返回结果
+ *
+ * @param isCanBack 直接点击返回键或者直接finish是否会触发回调
+ */
 inline fun Fragment.forActivityResult(
     data: Intent,
     isCanBack: Boolean = false,
     crossinline callback: ((result: Intent?) -> Unit)
 ) {
-    getActivityResult()?.launch(data) {
-        if (isCanBack || it.resultCode == Activity.RESULT_OK) {
-            callback(it.data)
-        }
+    getActivityResult()?.launch(data, isCanBack) {
+        callback(it.data)
     }
 }
 
+/**
+ * Fragment中使用
+ * Activity跳转并在回调用获取返回结果
+ *
+ * @param extras 可变参数Pair键值对
+ * @param isCanBack 直接点击返回键或者直接finish是否会触发回调
+ */
 inline fun <reified T : FragmentActivity> Fragment.forActivityResult(
     vararg extras: Pair<String, Any?>,
     isCanBack: Boolean = false,
@@ -78,12 +122,11 @@ inline fun <reified T : FragmentActivity> Fragment.forActivityResult(
 
 /**
  *  作用同[Activity.finish]
- *  示例：
  *  <pre>
  *      finish(this, "Key" to "Value")
  *  </pre>
  *
- * @param params extras键值对
+ * @param params 可变参数Pair键值对
  */
 fun FragmentActivity.finishResult(vararg params: Pair<String, Any?>) = run {
     setResult(Activity.RESULT_OK, Intent().putExtras(*params))
@@ -118,6 +161,15 @@ inline fun <reified T : FragmentActivity> Fragment.toActivity(vararg extras: Pai
     }
 }
 
+/**
+ * 泛型Activity获取一个Intent实例的扩展
+ *  <pre>
+ *      pairIntent<ActResultActivity>(
+ *     "tag" to TAG,
+ *    "timestamp" to System.currentTimeMillis()
+ *   )
+ *  </pre>
+ */
 inline fun <reified T : FragmentActivity> Context.pairIntent(vararg extras: Pair<String, Any?>) = Intent(this, T::class.java).putExtras(*extras)
 
 inline fun <reified T : FragmentActivity> Fragment.pairIntent(vararg extras: Pair<String, Any?>) = requireActivity().pairIntent<T>(*extras)
