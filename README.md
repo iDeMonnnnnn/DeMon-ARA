@@ -34,7 +34,7 @@ allprojects {
 
 #### 1.初始化
 
-```java
+```kotlin
 class App : Application() {
 
     override fun onCreate() {
@@ -46,7 +46,7 @@ class App : Application() {
 
 #### 2.Kotlin代码中使用
 
-```java
+```kotlin
 val intent = Intent(this@MainActivity, JavaActivity::class.java)
 forActivityResult(intent) {
      val str = it?.getStringExtra("tag") ?: ""
@@ -56,7 +56,7 @@ forActivityResult(intent) {
 
 #### 3.Java代码中使用
 
-```java
+```kotlin
     DeMonActivityResult<Intent, ActivityResult> result = DeMonAraHelper.getActivityResult(JavaActivity.this);
             if (result != null) {
         result.launch(new Intent(this, TestJumpActivity.class), true,
@@ -70,6 +70,13 @@ forActivityResult(intent) {
                 });
     }
 ```
+
+更多扩展方法的使用可见[示例代码](https://github.com/iDeMonnnnnn/DeMon-ARA/tree/main/app/src/main/java/com/demon/ara)
+
+
+### BUG/问题/建议
+
+请[issues](https://github.com/iDeMonnnnnn/DeMon-ARA/issues)
 
 ### Licensed
 

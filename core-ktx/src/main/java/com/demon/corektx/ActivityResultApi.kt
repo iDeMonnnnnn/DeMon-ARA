@@ -15,7 +15,7 @@ import com.demon.core.lifecycle.DeMonActivityCallbacks
  * E-mail idemon_liu@qq.com
  * Desc: Activity Results API ktx
  */
-inline fun FragmentActivity.getActivityResult(): DeMonActivityResult<Intent, ActivityResult>? {
+fun FragmentActivity.getActivityResult(): DeMonActivityResult<Intent, ActivityResult>? {
     val mapKey = intent.getStringExtra(DeMonActivityCallbacks.DEMON_ACTIVITY_KEY)
     return if (!mapKey.isNullOrEmpty()) {
         DeMonActivityCallbacks.resultMap[mapKey]
@@ -24,7 +24,7 @@ inline fun FragmentActivity.getActivityResult(): DeMonActivityResult<Intent, Act
     }
 }
 
-inline fun Fragment.getActivityResult(): DeMonActivityResult<Intent, ActivityResult>? {
+fun Fragment.getActivityResult(): DeMonActivityResult<Intent, ActivityResult>? {
     val mapKey = requireActivity().intent.getStringExtra(DeMonActivityCallbacks.DEMON_FRAGMENT_KEY)
     return if (!mapKey.isNullOrEmpty()) {
         DeMonActivityCallbacks.resultMap[mapKey]
