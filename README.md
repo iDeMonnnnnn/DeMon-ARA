@@ -1,6 +1,7 @@
 [![Hex.pm](https://img.shields.io/badge/Jetpack-AndroidX-orange)]() [![](https://jitpack.io/v/iDeMonnnnnn/DeMon-ARA.svg)](https://jitpack.io/#iDeMonnnnnn/DeMon-ARA)
 ## DeMon-ARA
 Activity Results API自动化注册&极简使用方案。
+
 <https://demon.blog.csdn.net/article/details/123276161>
 
 ### 添加依赖
