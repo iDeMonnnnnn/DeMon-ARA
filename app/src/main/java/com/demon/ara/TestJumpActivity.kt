@@ -8,11 +8,13 @@ import com.demon.corektx.finishResult
 
 
 class TestJumpActivity : AppCompatActivity() {
-    private  val TAG = "TestJumpActivity"
+    private val TAG = "TestJumpActivity"
 
     private val string by extraAct<String>("tag")
 
     private val time by extraAct("timestamp", 0L)
+
+    private val benchmark by extraAct("benchmark", false)
 
     private lateinit var binding: ActivityActResultTwoBinding
 
@@ -23,6 +25,12 @@ class TestJumpActivity : AppCompatActivity() {
 
         binding.text.text = "key={$string}\ntime={$time}"
         binding.btnFinish.setOnClickListener {
+            finishResult("tag" to TAG)
+        }
+
+
+
+        if (benchmark) {
             finishResult("tag" to TAG)
         }
     }

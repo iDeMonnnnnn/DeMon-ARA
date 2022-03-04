@@ -58,9 +58,4 @@ object DeMonAraHelper {
         }
     }
 
-       fun get(@NonNull activity: FragmentActivity){
-           DeMonActivityResult(activity,ActivityResultContracts.GetContent())
-       }
-
-
 }

@@ -30,6 +30,10 @@
         <activity
             android:name=".java.JavaActivity"
             android:label="测试Java调用" />
+        <activity
+            android:name=".BenchmarkActivity"
+            android:exported="false"
+            android:label="Benchmark" />
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import com.demon.ara.databinding.ActivityMainBinding
 import com.demon.ara.java.JavaActivity
 import com.demon.corektx.forActivityResult
 import com.demon.corektx.pairIntent
+import com.demon.corektx.toActivity
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
@@ -51,6 +52,11 @@ class MainActivity : AppCompatActivity() {
                     val str = it?.getStringExtra("tag") ?: ""
                     text.text = "跳转页面返回值：$str"
                 }
+            }
+
+
+            btn3.setOnClickListener {
+                toActivity<BenchmarkActivity>()
             }
         }
     }

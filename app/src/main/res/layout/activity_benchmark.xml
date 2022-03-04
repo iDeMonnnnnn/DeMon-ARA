@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".BenchmarkActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn"
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="测试Activity跳转及返回值"
+        android:text="startActivityForResult()\nonActivityResult()"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="测试Fragment"
+        android:text="GhostFragment"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="测试Java调用"
+        android:text="Activity Results API"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,33 +51,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="测试系统启动器"
+        android:text="DeMon-ARA"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn1" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/colorAccent"
-        android:text="Benchmark"
-        android:theme="@style/Theme.MaterialComponents"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn2" />
-
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn3" />
+        app:layout_constraintTop_toBottomOf="@id/btn2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

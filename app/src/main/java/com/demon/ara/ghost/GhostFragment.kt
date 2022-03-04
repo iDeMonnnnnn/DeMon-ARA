@@ -41,6 +41,13 @@ class GhostFragment : Fragment() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == this.requestCode) {
+            callback?.let { it1 -> it1(data) }
+        }
+    }
+
     override fun onDetach() {
         super.onDetach()
         intent = null

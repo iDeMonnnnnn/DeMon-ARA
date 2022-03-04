@@ -35,6 +35,8 @@ class DeMonActivityResult<I, O>(caller: ActivityResultCaller, contract: Activity
                 }
             }
         }
+        //回收单次的callback
+        callback = null
     }
 
     private var callback: ActivityResultCallback<O>? = null
