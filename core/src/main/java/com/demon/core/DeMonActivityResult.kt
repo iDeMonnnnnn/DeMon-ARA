@@ -18,7 +18,7 @@ class DeMonActivityResult<I, O>(caller: ActivityResultCaller, contract: Activity
 
     /**
      * 直接点击返回键或者直接finish是否会触发返回回调
-     * 用于处理一些特殊情况：如返回刷新等
+     * 用于处理一些特殊情况：如只要返回就刷新等
      * 注意此时回调返回的值或者{ActivityResult#getData()}应该为空，需要做好判空处理
      */
     private var isNeedBack = false
@@ -27,10 +27,12 @@ class DeMonActivityResult<I, O>(caller: ActivityResultCaller, contract: Activity
         if (isNeedBack) {
             callback?.onActivityResult(it)
         } else {
-            if (it != null && it is ActivityResult && it.resultCode == Activity.RESULT_OK) {
-                callback?.onActivityResult(it)
-            } else {
-                callback?.onActivityResult(it)
+            if (it != null) {
+                if (it is ActivityResult) {
+                    if (it.resultCode == Activity.RESULT_OK) callback?.onActivityResult(it)
+                } else {
+                    callback?.onActivityResult(it)
+                }
             }
         }
     }

@@ -25,36 +25,8 @@ object DeMonActivityCallbacks : Application.ActivityLifecycleCallbacks {
     //临时存储FragmentCallbacks
     val callbackMap = mutableMapOf<String, DeMonFragmentCallbacks>()
 
-    //临时存储BaseActivityResult
+    //临时存储DeMonActivityResult
     val resultMap = mutableMapOf<String, DeMonActivityResult<Intent, ActivityResult>>()
-    override fun onActivityPaused(p0: Activity) {
-
-    }
-
-    override fun onActivityStarted(p0: Activity) {
-
-    }
-
-    override fun onActivityDestroyed(activity: Activity) {
-        if (activity is FragmentActivity) {
-            val mapKey = activity.intent.getStringExtra(DEMON_ACTIVITY_KEY)
-            Log.i(TAG, "onActivityDestroyed: mapKey=$mapKey")
-            if (!mapKey.isNullOrEmpty()) {
-                callbackMap[mapKey]?.let { activity.supportFragmentManager.unregisterFragmentLifecycleCallbacks(it) }
-                //移除
-                callbackMap.remove(mapKey)
-                resultMap.remove(mapKey)
-            }
-        }
-    }
-
-    override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {
-
-    }
-
-    override fun onActivityStopped(p0: Activity) {
-
-    }
 
     override fun onActivityCreated(activity: Activity, p1: Bundle?) {
         if (activity is FragmentActivity) {
@@ -70,6 +42,22 @@ object DeMonActivityCallbacks : Application.ActivityLifecycleCallbacks {
         }
     }
 
-    override fun onActivityResumed(p0: Activity) {
+    override fun onActivityDestroyed(activity: Activity) {
+        if (activity is FragmentActivity) {
+            val mapKey = activity.intent.getStringExtra(DEMON_ACTIVITY_KEY)
+            Log.i(TAG, "onActivityDestroyed: mapKey=$mapKey")
+            if (!mapKey.isNullOrEmpty()) {
+                callbackMap[mapKey]?.let { activity.supportFragmentManager.unregisterFragmentLifecycleCallbacks(it) }
+                //移除
+                callbackMap.remove(mapKey)
+                resultMap.remove(mapKey)
+            }
+        }
     }
+
+    override fun onActivityStarted(p0: Activity) {}
+    override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {}
+    override fun onActivityResumed(p0: Activity) {}
+    override fun onActivityPaused(p0: Activity) {}
+    override fun onActivityStopped(p0: Activity) {}
 }
