@@ -73,9 +73,24 @@ forActivityResult(intent) {
     }
 ```
 
-更多扩展方法的使用可见[示例代码](https://github.com/iDeMonnnnnn/DeMon-ARA/tree/main/app/src/main/java/com/demon/ara)
+更多使用，可见[示例代码](https://github.com/iDeMonnnnnn/DeMon-ARA/tree/main/app/src/main/java/com/demon/ara)
 
 可直接下载体验[demo apk](https://github.com/iDeMonnnnnn/DeMon-ARA/raw/main/demo.apk)
+
+### Benchmark
+
+我们简单测试一下以下四种方式直接执行100次时的性能。
+测试代码可见：[BenchmarkActivity.kt](https://github.com/iDeMonnnnnn/DeMon-ARA/blob/main/app/src/main/java/com/demon/ara/BenchmarkActivity.kt)
+测试机型：小米5
+
+|方式|1(ms)|2(ms)|3(ms)|4(ms)|5(ms)|
+|--|--|--|--|--|--|
+|startActivityForResult()/onActivityResult()|6638|6638|6605|6597|6687|
+|GhostFragment|6589|6752|6555|6553|6572|
+|Activity Results API|6586|6786|6708|6666|6604|
+|DeMon-ARA|6974|6851|6901|6912|6839|
+
+内存方面：测试过程中使用AndroidStudio Profiler监测的内存波动基本一致。
 
 ### BUG/问题/建议
 
