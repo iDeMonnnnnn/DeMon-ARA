@@ -10,9 +10,9 @@
         android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="请求单个权限"
+        android:text="RequestPermission"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
-        android:text="请求一组权限"
+        android:text="RequestMultiplePermissions"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,34 +36,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
-        android:text="拍照"
+        android:text="TakePicture"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn2" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
-        android:text="拍视频"
+        android:text="TakePicturePreview"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn3" />
+        app:layout_constraintTop_toBottomOf="@id/btn2" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
-        android:text="联系人页面"
+        android:text="GetContent"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn4" />
 
@@ -72,22 +77,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
-        android:text="选择内容"
+        android:text="GetMultipleContents"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn5" />
+        app:layout_constraintTop_toBottomOf="@id/btn4" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
-        android:text="选择一个文档"
+        android:text="OpenDocument"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn6" />
 
@@ -96,22 +103,64 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
-        android:text="选择多个文档"
+        android:text="OpenMultipleDocuments"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn7" />
+        app:layout_constraintTop_toBottomOf="@id/btn6" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
-        android:text="选择目录"
+        android:text="OpenDocumentTree"
         android:theme="@style/Theme.MaterialComponents"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn8" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:text="CreateDocument"
+        android:theme="@style/Theme.MaterialComponents"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn8" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:text="CaptureVideo"
+        android:theme="@style/Theme.MaterialComponents"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn10" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:text="PickContact"
+        android:theme="@style/Theme.MaterialComponents"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn10" />
 </androidx.constraintlayout.widget.ConstraintLayout>

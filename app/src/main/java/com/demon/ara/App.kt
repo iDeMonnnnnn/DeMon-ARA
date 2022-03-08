@@ -2,6 +2,7 @@ package com.demon.ara
 
 import android.app.Application
 import com.demon.core.DeMonAraHelper
+import com.demon.qfsolution.QFHelper
 
 /**
  * @author DeMon
@@ -13,6 +14,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        QFHelper.init(this)
         DeMonAraHelper.init(this)
     }
 }

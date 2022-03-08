@@ -39,6 +39,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    //QFsolution
+    api 'com.github.iDeMonnnnnn:QFsolution:1.1.6'
     //implementation project(":core-ktx")
     //implementation 'com.github.iDeMonnnnnn.DeMon-ARA:core:1.0.0'
     //implementation 'androidx.activity:activity:1.4.0'
