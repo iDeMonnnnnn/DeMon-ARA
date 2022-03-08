@@ -46,6 +46,8 @@ class App : Application() {
 
 #### 2.Kotlin代码中使用
 
+kotlin的进一步封装使用可见[ActivityResultApi.kt](https://github.com/iDeMonnnnnn/DeMon-ARA/blob/main/core-ktx/src/main/java/com/demon/corektx/ActivityResultApi.kt)
+
 ```kotlin
 val intent = Intent(this@MainActivity, JavaActivity::class.java)
 forActivityResult(intent) {
