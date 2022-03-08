@@ -80,7 +80,9 @@ forActivityResult(intent) {
 ### Benchmark
 
 我们简单测试一下以下四种方式直接执行100次时的性能。
+
 测试代码可见：[BenchmarkActivity.kt](https://github.com/iDeMonnnnnn/DeMon-ARA/blob/main/app/src/main/java/com/demon/ara/BenchmarkActivity.kt)
+
 测试机型：小米5
 
 |方式|1(ms)|2(ms)|3(ms)|4(ms)|5(ms)|
