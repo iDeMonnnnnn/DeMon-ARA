@@ -4,19 +4,13 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk androidCompileVersion
 
     defaultConfig {
-        minSdk 16
-        targetSdk 32
+        minSdk androidMinSdkVersion
+        targetSdk androidTargetVersion
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
 }
 
 dependencies {

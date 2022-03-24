@@ -19,14 +19,18 @@ allprojects {
 ##### Kotlin
 ```
    implementation 'com.github.iDeMonnnnnn.DeMon-ARA:core-ktx:$latest_version'
+   //你自己项目的activity-ktx库
    implementation 'androidx.activity:activity-ktx:1.4.0'
+    //你自己项目的fragment-ktx库
    implementation 'androidx.fragment:fragment-ktx:1.4.1'
 ````
 
 ##### Java
 ```
    implementation 'com.github.iDeMonnnnnn.DeMon-ARA:core:$latest_version'
+   //你自己项目的activity库
    implementation 'androidx.activity:activity:1.4.0'
+   //你自己项目的fragment库
    implementation 'androidx.fragment:fragment:1.4.1'
 ```
 

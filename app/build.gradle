@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk androidCompileVersion
 
     defaultConfig {
         applicationId "com.demon.ara"
-        minSdk 16
-        targetSdk 32
+        minSdk androidMinSdkVersion
+        targetSdk androidTargetVersion
         versionCode 1
         versionName "1.0"
 
@@ -36,7 +36,7 @@ android {
 
 dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     //QFsolution
