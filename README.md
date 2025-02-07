@@ -1,4 +1,7 @@
 [![Hex.pm](https://img.shields.io/badge/Jetpack-AndroidX-orange)]() [![](https://jitpack.io/v/iDeMonnnnnn/DeMon-ARA.svg)](https://jitpack.io/#iDeMonnnnnn/DeMon-ARA)
+
+## [停止维护]本库在内存泄漏方面存在重大缺陷，仅当给同学们提供一个扩展思路，请谨慎使用！相对于Activity Results API，个人使用体验上来说更推荐GhostFragment方案～
+
 ## DeMon-ARA
 Activity Results API自动化注册&极简使用方案。
 
